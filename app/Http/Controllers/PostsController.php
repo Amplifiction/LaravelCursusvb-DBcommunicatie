@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,8 @@ class PostsController extends Controller
     {
         //$post = Post::where('url', $url)->first(); //overbodig omdat de route obv {post:url} gebeurt ipv {url}.
         return view('posts.show', [
-            'post' => $post
+            'post' => $post,
+            'comment'=>new Comment() //"foutmeldingen voorkomen"
     ]);
     }
 

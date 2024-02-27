@@ -9,7 +9,7 @@
                 <div class="form-error">{{ $message }}</div>
             @enderror
         </div>
-        <input type="text" name="name" id="name" value="{{ old('name') }}">
+        <input type="text" name="name" id="name" value="{{ old('name', $comment->name) }}">
     </div>
 
     <div class="form-element">
@@ -19,7 +19,7 @@
                 <div class="form-error">{{ $message }}</div>
             @enderror
         </div>
-        <textarea name="content" id="content">{{ old('content') }}</textarea>
+        <textarea name="content" id="content">{{ old('content', $comment->content) }}</textarea>
     </div>
 
     <div>

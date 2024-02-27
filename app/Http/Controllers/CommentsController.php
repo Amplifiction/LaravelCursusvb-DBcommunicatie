@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -14,6 +15,18 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' =>'required',
+            'content' =>'required',
+        ]);
+
+        $comment = new Comment();
+        $comment->content = $request->content;
+        $comment->name = $request->name;
+        $comment->post_id = $request->post_id;
+        $comment->save();
+
+        return redirect()->route('posts.show', $comment->post);
     }
 
     /**
@@ -22,9 +35,9 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Comment $comment)
     {
-        return view('comments.edit');
+        return view ('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -34,9 +47,18 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, Comment $comment)
     {
-        //
+        $request->validate([
+            'name'=>'required',
+            'content'=>'required',
+        ]);
+
+        $comment->content = $request->content;
+        $comment->name = $request->name;
+        $comment->save();
+
+        return redirect()->route('posts.show', $comment->post);
     }
 
     /**
@@ -45,8 +67,10 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Comment $comment)
     {
-        //
+        $post=$comment->post; //Omdat we de post niet meer kunnen ophalen na verwijderen kunnen we deze best eerst even bewaren zodat we een juiste redirect kunnen maken.
+        $comment->delete();
+        return redirect()->route('posts.show', $post);
     }
 }

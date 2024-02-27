@@ -31,14 +31,17 @@
             <h3>Comments</h3>
             <div class="comment-section">
                 <div class="comment-form">
-                    <form action="/comments/store" method="post">
+                    <form action="{{route('comments.store')}}" method="post">
+                        <input type="hidden" name="post_id" value="{{$post->id}}"> <!-- Om het post id mee te sturen kunnen we een hidden input in het formulier gebruiken. -->
                         @include('comments.includes.form', ['buttonText' => "Add comment"])
                     </form>
                 </div>
                 <div class="comments-list">
-                    @include('comments.includes.comment')
-                    @include('comments.includes.comment')
-                    @include('comments.includes.comment')
+                    @forelse ($post->comments as $comment)
+                        @include('comments.includes.comment')
+                    @empty
+                        <p>No comments yet.</p>
+                    @endforelse
                 </div>
             </div>
         </aside>

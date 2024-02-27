@@ -2,7 +2,8 @@
 
 @section('title', 'Posts')
 <p>ZIE CURSUS "DATABANK COMMUNICATIE, HOOFDSTUKKEN "CRUD" EN "CRUD: RELATIES".</p>
-<p>Dit zijn de stappen die gevolgd werden voor het creeëren van dit Laravel-project. De overige hoofdstukken zijn theoretische uitleg.</p>
+<p>Hierin staan zijn de stappen die gevolgd werden voor het creeëren van dit Laravel-project. De overige hoofdstukken zijn theoretische uitleg.</p>
+<p>Toegepast tot aan "Mutators, Accessors en Casts. (Momenteel geen idee of hier nog zaken van vallen toe te passen.)</p>
 @section('content')
     <section>
         <h2>Posts</h2>

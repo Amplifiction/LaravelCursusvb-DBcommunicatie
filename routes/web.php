@@ -29,8 +29,7 @@ Route::redirect('/', '/posts');
 Route::resource('/posts', PostsController::class); //vervangt bovenstaande
 Route::get('/posts/{post}/delete', [PostsController::class, 'delete']) ->name('posts.delete'); //Deze confirmatiepg zit niet in het standaardschema van crud en wordt (standaard) dus niet geregeld door resource ctrlr.
 
+//Route::get('/comments/id/edit', [CommentsController::class, 'edit']) ->name('comments.edit'); //Vervangen door resource
 Route::resource('/comments', CommentsController::class)->except(['index', 'show']);
-//Route::get('/comments/id/edit', [CommentsController::class, 'edit']) ->name('comments.edit');
-
 
 
