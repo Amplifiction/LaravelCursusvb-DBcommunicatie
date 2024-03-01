@@ -16,7 +16,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        //queries met paginate "chainen": zie documentatie. Paginate doet in feite all(), dus is overbodig.
+        $posts = Post::paginate(4);
         return view('posts.index',[
             'posts' => $posts
         ]);

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Default Layout</title>
     <link rel="stylesheet" href="/styles/styles.css">
+    @vite('resources/css/app.css')
 </head>
 <body>
 
